@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
+        <div class="container">
+            <a class="navbar-brand" href="#">🩺 MED-Connect</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto"><li class="nav-item">
+                    <a class="nav-link mx-lg-3" target="_blank"  href="medconnectfrontpg.html">Home</a></li>
+                 <li class="nav-item">  
+                <a class="nav-link mx-lg-3" target="_blank" href="bmi.html">BMI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-lg-3" target="_blank" href="meds.html">Medicine Tracker</a>
+                </li>
+                <li class="nav-item">
+                    <a  class="nav-link active mx-lg-2 fw-bold text-info"  href="reports.html">Reports</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-lg-3" target="_blank" href="help.html">Emergency contact</a>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </nav><br>
+    <div class="container">
+    <div class="p-4 mb-4 bg-white rounded shadow-sm border border-2" style="border-color: plum !important;">
+    <h3 class="mb-3 fw-bold" style="color:rgba(4, 26, 41, 0.685);">📊 Medical Reports & Vitals Tracker</h3>
+    <p class="text-muted small">Log your daily health metrics and securely keep track of your digital medical documents.</p>
+    <hr>
+
+    <div class="d-flex gap-3 mb-4 p-2 bg-light rounded small justify-content-center">
+        <span class="fw-bold text-secondary">Status Guide:</span>
+        <span><span class="badge bg-success">●</span> Normal</span>
+        <span><span class="badge bg-warning text-dark">●</span> Low</span>
+        <span><span class="badge bg-danger">●</span> High</span>
+    </div>
+<div class="alert alert-info border-0 shadow-sm d-flex justify-content-between align-items-center mb-4 rounded-3">
+    <div>
+        <strong class="text-dark">💡 Note for Guests:</strong> 
+        <span class="text-secondary">You can evaluate your logs below for free! To store your data permanently so it never deletes when you refresh, please link an account.</span>
+    </div>
+    <div>
+        <a href="signin.html" class="btn btn-sm btn-primary px-3 bg-teal border-0" style="background-color: #00796b;">Sign In / Register</a>
+    </div>
+</div>
+    <div class="row g-4 mb-4">
+        
+        <div class="col-12 mb-2">
+            <h5 class="fw-bold text-decoration mb-3">❤️ Blood Pressure Tracker</h5>
+            
+            <div class="row g-2 align-items-end mb-3">
+                <div class="col-md-3 col-sm-4">
+                    <label for="systolicInput" class="form-label text-muted small fw-bold mb-1">Systolic (Top)</label>
+                    <input type="text" id="systolicInput" class="form-control form-control-sm" placeholder="120">
+                </div>
+                <div class="col-md-3 col-sm-4">
+                    <label for="diastolicInput" class="form-label text-muted small fw-bold mb-1">Diastolic (Bot)</label>
+                    <input type="text" id="diastolicInput" class="form-control form-control-sm" placeholder="80">
+                </div>
+                <div class="col-md-3 col-sm-4">
+                    <label for="pulseInput" class="form-label text-muted small fw-bold mb-1">Pulse (Optional)</label>
+                    <input type="text" id="pulseInput" class="form-control form-control-sm" placeholder="e.g., 72">
+                </div>
+                <div class="col-md-3 col-12">
+                    <button id="saveBpBtn" class="btn btn-sm w-100 text-white fw-bold" style="background-color: rgb(153, 43, 153);">Log BP & Pulse</button>
+                </div>
+            </div>
+
+            <div class="table-responsive" style="max-height: 180px; overflow-y: auto;">
+                <table class="table table-sm table-bordered align-middle text-center small mb-0">
+                    <thead class="table-light sticky-top">
+                        <tr>
+                            <th>Date</th>
+                            <th>BP (Sys/Dia)</th>
+                            <th>Pulse</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bpTableBody">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr class="my-3">
+
+        <div class="col-12 mb-2">
+            <h5 class="fw-bold text-decoration mb-3">🍬 Blood Sugar Tracker</h5>
+            
+            <div class="row g-2 align-items-end mb-3">
+                <div class="col-md-4 col-sm-8">
+                    <label for="sugarInput" class="form-label text-dark small fw-bold mb-1">Glucose Level (mg/dL)</label>
+                    <input type="text" id="sugarInput" class="form-control form-control-sm" placeholder="e.g., 95">
+                </div>
+                <div class="col-md-4 col-sm-6">
+        <label for="sugarTimeSelect" class="form-label text-dark small fw-bold mb-1">Testing Period</label>
+        <select id="sugarTimeSelect" class="form-control form-control-sm">
+            <option value="Fasting">Fasting (Before Meal)</option>
+            <option value="Post-Meal">Post-Meal (After Eating)</option>
+        </select>
+    </div>
+                <div class="col-md-3 col-12">
+                    <button id="saveSugarBtn" class="btn btn-sm w-100 text-white fw-bold" style="background-color: rgb(126, 56, 192);">Log Sugar</button>
+                </div>
+            </div>
+
+            <div class="table-responsive" style="max-height: 180px; overflow-y: auto;">
+                <table class="table table-sm table-bordered align-middle text-center small mb-0">
+                    <thead class="table-light sticky-top">
+                        <tr>
+                            <th>Date</th>
+                            <th>Sugar Reading</th>
+                            <th>time</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sugarTableBody">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="my-4">
+
+    <div class="bg-light p-3 rounded">
+        <h5 class="fw-bold text-decoration mb-2">📁 Document Vault (Upload Reports)</h5>
+        <p class="text-dark small mb-3">Upload your lab PDFs, X-Rays, or prescriptions to view them quickly later.</p>
+        
+        <div class="row g-2 mb-3">
+            <div class="col-md-9">
+                <input type="file" id="documentUploadInput" class="form-control form-control-sm" accept="image/*,.pdf">
+            </div>
+            <div class="col-md-3">
+                <button id="uploadDocBtn" class="btn btn-sm w-100 btn-dark fw-bold">Upload File</button>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-sm table-hover bg-white text-center align-middle small mb-0 border">
+                <thead class="table-secondary">
+                    <tr>
+                        <th>Date Uploaded</th>
+                        <th>File Name</th>
+                        <th>View</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="documentTableBody">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Helper function to get today's timestamp layout
+function getFormattedDate() {
+    const today = new Date();
+    return today.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+} 
+
+// --- 1. BLOOD PRESSURE & PULSE LOGIC ---
+document.getElementById('saveBpBtn').addEventListener('click', function() {
+    const systolic = parseInt(document.getElementById('systolicInput').value);
+    const diastolic = parseInt(document.getElementById('diastolicInput').value);
+    const pulse = document.getElementById('pulseInput').value;
+
+    if (!systolic || !diastolic) {
+        alert("Please fill in both Systolic and Diastolic fields to evaluate!");
+        return;
+    }
+
+    // Determine color styles based on thresholds
+    let sysStyle = 'color: #198754;'; // Normal Green
+    if (systolic >= 140) sysStyle = 'color: #dc3545;'; // High Red
+    else if (systolic < 90) sysStyle = 'color: #ffc107; background-color: #fff3cd; padding: 2px 6px; border-radius: 4px; display: inline-block;'; // Fixed Low Yellow Badge
+
+    let diaStyle = 'color: #198754;'; 
+    if (diastolic >= 90) diaStyle = 'color: #dc3545;';
+    else if (diastolic < 60) diaStyle = 'color: #ffc107; background-color: #fff3cd; padding: 2px 6px; border-radius: 4px; display: inline-block;';
+
+    let pulseStyle = 'color: #198754;';
+    if (pulse !== "") {
+        const pNum = parseInt(pulse);
+        if (pNum > 100) pulseStyle = 'color: #dc3545;';
+        else if (pNum < 60) pulseStyle = 'color: #ffc107; background-color: #fff3cd; padding: 2px 6px; border-radius: 4px; display: inline-block;';
+    }
+
+    // Build the dynamic structural row
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td class="text-muted">${getFormattedDate()}</td>
+        <td><span class="fw-bold" style="${sysStyle}">${systolic}</span> / <span class="fw-bold" style="${diaStyle}">${diastolic}</span></td>
+        <td><span class="fw-bold" style="${pulseStyle}">${pulse || '-'}</span></td>
+        <td><button class="btn btn-sm btn-outline-danger py-0 px-2 btn-delete">×</button></td>
+    `;
+
+    // Hook delete button functionality
+    row.querySelector('.btn-delete').addEventListener('click', () => row.remove());
+    document.getElementById('bpTableBody').appendChild(row);
+
+    // Clear input fields automatically
+    document.getElementById('systolicInput').value = '';
+    document.getElementById('diastolicInput').value = '';
+    document.getElementById('pulseInput').value = '';
+});
+
+// --- 2. FIXED BLOOD SUGAR HISTORY GENERATOR ---
+document.getElementById('saveSugarBtn').addEventListener('click', function() {
+    const sugar = parseInt(document.getElementById('sugarInput').value);
+    const timeBlock = document.getElementById('sugarTimeSelect').value; // Grabs "Fasting" or "Post-Meal"
+
+    if (!sugar) {
+        alert("Please enter a valid glucose number to evaluate!");
+        return;
+    }
+
+    let sugarStyle = 'color: #198754;'; // Default: Healthy Green
+    
+    // Evaluate color thresholds independently based on selection
+    if (timeBlock === "Fasting") {
+        if (sugar >= 126) {
+            sugarStyle = 'color: #dc3545;'; // High Red
+        } else if (sugar < 70) {
+            sugarStyle = 'color: #ffc107; background-color: #fff3cd; padding: 2px 6px; border-radius: 4px; display: inline-block;'; // Low Yellow
+        }
+    } else if (timeBlock === "Post-Meal") {
+        if (sugar >= 200) {
+            sugarStyle = 'color: #dc3545;'; // High Red
+        } else if (sugar < 90) {
+            sugarStyle = 'color: #ffc107; background-color: #fff3cd; padding: 2px 6px; border-radius: 4px; display: inline-block;'; // Low Yellow
+        }
+    }
+
+    // Build the structural row with exactly 4 distinct <td> elements to match your 4 headers!
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td class="text-muted">${getFormattedDate()}</td>
+        <td><span class="fw-bold" style="${sugarStyle}">${sugar} mg/dL</span></td>
+        <td><span class="badge bg-light text-dark border">${timeBlock}</span></td>
+        <td><button class="btn btn-sm btn-outline-danger py-0 px-2 btn-delete">×</button></td>
+    `;
+
+    // Hook delete button row clean-up functionality
+    row.querySelector('.btn-delete').addEventListener('click', () => row.remove());
+    document.getElementById('sugarTableBody').appendChild(row);
+
+    // Reset numeric metric element automatically
+    document.getElementById('sugarInput').value = '';
+});
+
+// --- 3. DOCUMENT VAULT LOGIC ---
+document.getElementById('uploadDocBtn').addEventListener('click', function(e) {
+    e.preventDefault(); 
+    
+    const fileInput = document.getElementById('documentUploadInput');
+    const tableBody = document.getElementById('documentTableBody');
+    
+    if (!fileInput || fileInput.files.length === 0) {
+        alert("Please select a report file or image first!");
+        return;
+    }
+
+    const file = fileInput.files[0];
+    const fileName = file.name;
+    const fileURL = URL.createObjectURL(file);
+    const todayDate = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td class="text-muted">${todayDate}</td>
+        <td class="text-start text-truncate" style="max-width: 250px;">📄 ${fileName}</td>
+        <td><a href="${fileURL}" target="_blank" class="btn btn-sm btn-outline-primary py-0 px-2">View</a></td>
+        <td><button class="btn btn-sm btn-outline-danger py-0 px-2 btn-delete">×</button></td>
+    `;
+
+    row.querySelector('.btn-delete').addEventListener('click', function() {
+        row.remove();
+    });
+
+    tableBody.appendChild(row);
+    fileInput.value = '';
+});
+</script>
+</body>
+</html>
